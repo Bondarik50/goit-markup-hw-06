@@ -9,6 +9,7 @@
   --icon-color: #afb1b8;
   --white-rgvn: rgba(255, 255, 255, 0.1);
   --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --plaseholder-color: rgba(117, 117, 117, 0.5);
 }
 
 body {
@@ -197,6 +198,8 @@ address {
   padding: 10px 32px;
   min-width: 200px;
   border-color: transparent;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  transition: background-color var(--transition);
 }
 .main-btn:hover,
 .main-btn:focus {
@@ -374,10 +377,13 @@ address {
   padding-top: 60px;
   padding-bottom: 60px;
 }
-.footer .logo {
-  margin-bottom: 20px;
-}
 
+.footer-cont-item:not(:last-child) {
+  margin-right: 70px;
+}
+.footer-cont-item:last-child {
+  margin-left: auto;
+}
 .footer-item:not(:last-child) {
   margin-bottom: 9px;
 }
@@ -416,10 +422,6 @@ address {
   line-height: 16px;
 }
 
-.footer-logos {
-  margin-right: 70px;
-  display: inline-block;
-}
 .footer-container {
   display: flex;
   align-items: baseline;
@@ -443,22 +445,6 @@ address {
   text-transform: uppercase;
 }
 
-.footer-form-btn {
-  width: 200px;
-  height: 50px;
-  background-color: var(--accent-color);
-  color: var(--other-color);
-  font-weight: 700;
-  font-size: 16px;
-  line-height: calc(30 / 16);
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  transition: var(--transition);
-}
-.footer-form-btn:hover,
-.footer-form-btn:focus {
-  background-color: var(--btn-color);
-}
 .footer-input {
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -466,7 +452,7 @@ address {
   font-size: 16px;
   line-height: calc(20 / 16);
   color: rgba(255, 255, 255, 0.6);
-  background-color: #2f303a;
+  background-color: var(--main-color);
   outline: none;
   width: 358px;
   height: 50px;
@@ -611,8 +597,8 @@ address {
   justify-content: center;
   transition: color var(--transition);
 }
-.modal-svg:hover,
-.modal-svg:focus {
+.modal-close:hover .modal-svg,
+.modal-close:focus .modal-svg {
   fill: var(--accent-color);
 }
 .modal-close {
@@ -627,7 +613,6 @@ address {
   position: absolute;
   top: 8px;
   right: 8px;
-  transition: color var(--transition);
 }
 
 .backdrop.is-hidden {
@@ -663,8 +648,11 @@ address {
 .form-input:focus + .input-icon {
   fill: var(--accent-color);
 }
-.form-field {
+.form-field :not(:last-child) {
   margin-bottom: 12px;
+}
+.form-field-wrapper {
+  margin-bottom: 20px;
 }
 .form-text {
   width: 100%;
@@ -672,11 +660,24 @@ address {
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
   padding: 12px 16px;
+  resize: none;
 }
 .form-text:hover,
 .form-text:focus {
   border-color: var(--accent-color);
 }
+.form-text::placeholder {
+  color: var(--plaseholder-color);
+}
+.input-text {
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+  color: var(--second-color);
+  margin-bottom: 4px;
+}
+
 .input-wrap {
   position: relative;
 }
@@ -687,14 +688,21 @@ address {
   transform: translateY(-50%);
   transition: fill var(--transition);
 }
+
+.form-policy {
+  margin-bottom: 30px;
+}
+
 .check-text {
   font-size: 14px;
   line-height: 1.7;
   color: var(--second-color);
   display: flex;
   align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
-.check-text span {
+.check-text .span-check {
   width: 15px;
   height: 15px;
   border: 2px solid #000;
@@ -704,41 +712,39 @@ address {
   align-items: center;
   justify-content: center;
 }
+.span-check:hover,
+.span-check:focus {
+  fill: var(--transition);
+}
+
 .policy-icon {
   fill: transparent;
 }
-.policy-check:checked + .check-text span {
-  border: none;
+
+.policy-check:checked + .check-text .span-check {
+  border: 2px solid var(--accent-color);
   background-color: var(--accent-color);
 }
 .policy-check:checked + .check-text .policy-icon {
   fill: var(--other-color);
+}
+.policy-check:hover + .check-text .span-check,
+.policy-check:focus + .check-text .span-check {
+  border: 2px solid var(--accent-color);
 }
 .modal-link {
   border-bottom: 1px solid var(--btn-color);
   color: var(--btn-color);
   margin-left: 3px;
 }
-.button-modal {
-  width: 200px;
-  height: 50px;
-  background-color: var(--accent-color);
-  color: var(--other-color);
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.87;
-  border-radius: 4px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  transition: background-color var(--transition);
-}
+
 .modal-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
 }
-.button-modal:hover,
-.button-modal:focus {
-  background-color: var(--btn-color);
+.button-modal {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
