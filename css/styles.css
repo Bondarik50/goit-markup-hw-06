@@ -377,7 +377,9 @@ address {
   padding-top: 60px;
   padding-bottom: 60px;
 }
-
+.footer .logo {
+  margin-bottom: 20px;
+}
 .footer-cont-item:not(:last-child) {
   margin-right: 70px;
 }
@@ -458,6 +460,10 @@ address {
   height: 50px;
   margin-right: 12px;
   padding-left: 16px;
+}
+.footer-input:hover,
+.footer-input:focus {
+  border-color: var(--accent-color);
 }
 .footer-form-icon {
   width: 24px;
@@ -684,7 +690,7 @@ address {
 .input-icon {
   position: absolute;
   left: 14px;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   transition: fill var(--transition);
 }
